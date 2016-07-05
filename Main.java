@@ -6,5 +6,7 @@ public class Main {
 			for(String b : a) {
 				System.out.println(b);
 			}
+			for (final File f : inputFiles) {			
+			}
 	}
 }
