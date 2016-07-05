@@ -1,12 +1,23 @@
 import java.util.Scanner;
 
 public class Main {
-	public static void live(String[] a) {		
-			int y=90;
-			for(String b : a) {
-				System.out.println(b);
+	private static final String getGeneratedClass(final CommandLine cl) {
+		// get the name of the generated class
+		final String className;
+		if (cl.hasOption('n')) {
+			className = cl.getOptionValue('n');
+		} else {
+			String s = "";
+			for (final File f : inputFiles) {
+				if (s.length() != 0)
+					s += "_";
+				if (f.getName().indexOf('.') != -1)
+					s += f.getName().substring(0, f.getName().lastIndexOf('.'));
+				else
+					s += f.getName();
 			}
-			for (final File f : inputFiles) {			
-			}
+			className = pascalCase(s);
+		}
+		return className;
 	}
 }
